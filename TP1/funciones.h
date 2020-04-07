@@ -15,5 +15,5 @@ int multiplicar (int x, int y);
 int dividir (int x, int y, float* direccionDeVariable);
 void titulo();
 int valorMenu(int x, int y);
-int factorial(int num);
+long int factorial(int num);
 //#endif /* FUNCIONES_H_ */

@@ -47,8 +47,8 @@ int main(void)
 	int flagOperacion=TRUE;
 	int errorHub;
 	float resultado;
-	int resFactorialA;
-	int resFactorialB;
+	double resFactorialA;
+	double resFactorialB;
 
 	do
 	{
@@ -122,7 +122,7 @@ int main(void)
 						printf("\n\n--RESPUESTA--\n");
 						if(resFactorialA!=0)
 						{
-							printf("El factorial de A es: %d.\n",resFactorialA);
+							printf("El factorial de A es: %f.\n",resFactorialA);
 						}
 						else
 						{
@@ -131,7 +131,7 @@ int main(void)
 
 						if(resFactorialB!=0)
 						{
-							printf("El factorial de B es: %d.\n\n",resFactorialB);
+							printf("El factorial de B es: %f.\n\n",resFactorialB);
 						}
 						else
 						{
@@ -150,7 +150,6 @@ int main(void)
 				}
 				system("cls");
 				break;
-
 			case 5: break;
 		}
 	}while(menu != 5);

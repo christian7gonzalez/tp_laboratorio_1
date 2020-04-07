@@ -34,10 +34,10 @@ int multiplicar (int x, int y)
 
 int dividir (int x, int y, float* direccionDeVariable)
 {
-	float errorHub;
+	int errorHub;
 	if (y!=0)
 	{
-		*direccionDeVariable = (float)x / y;
+		*direccionDeVariable = (double)x / y;
 		errorHub = 0;
 	}
 	else
@@ -60,9 +60,9 @@ int valorMenu(int x, int y)
 	return menu;
 }
 
-int factorial(int num)
+long int factorial(int num)
 {
-	int fac=1;
+	long int fac=1;
 	if (num>0)
 	{
 		for(int itera=num; itera>0;itera--)
