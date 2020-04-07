@@ -109,37 +109,52 @@ int main(void)
 				break;
 
 			case 4:
-				if(flagOperacion==FALSE)
+
+				if(flagOperacion==FALSE && flagX==FALSE && flagY==FALSE)
 				{
 					if(errorHub!=0 && subMenu=='c')
 					{
-						printf("\n\nERROR - No se puede realizar la division B es Cero.\n");
+						printf("\n\nERROR - No se puede realizar la division, B es Cero.\n");
 						system("PAUSE");
 					}
-					else if(flagX==FALSE && flagY==FALSE && subMenu=='e')
+					else if(subMenu=='e')
 					{
-						printf("\n\n--RESPUESTA--\nEl factorial de A es: %d y el factorial de B es: %d.\n",resFactorialA, resFactorialB);
+						printf("\n\n--RESPUESTA--\n");
+						if(resFactorialA!=0)
+						{
+							printf("El factorial de A es: %d.\n",resFactorialA);
+						}
+						else
+						{
+							printf("\n\n\aERROR - No se puede realiza el factorial de un numero menor a 1. A es igual a %d.\n",x);
+						}
+
+						if(resFactorialB!=0)
+						{
+							printf("El factorial de B es: %d.\n\n",resFactorialB);
+						}
+						else
+						{
+							printf("\n\n\aERROR - No se puede realiza el factorial de un numero menor a 1. B es igual a %d.\n\n",y);
+						}
 						system("PAUSE");
 					}
 					else{
-						printf("\n\n--RESPUESTA--El resultado es: %f.",resultado);
+						printf("\n\n--RESPUESTA--\nEl resultado es: %.2f.\n",resultado);
 						system("PAUSE");
 					}
 				}else
 				{
-					printf("\a\n\nALERTA! - No realizo ninguna operacion.\n");
+					printf("\a\n\nALERTA! - No realizo ninguna operacion o no ingreso valores para A y B.\n");
 					system("PAUSE");
-
 				}
-
 				system("cls");
 				break;
 
 			case 5: break;
-
 		}
-
 	}while(menu != 5);
+
 	return 0;
 }
 

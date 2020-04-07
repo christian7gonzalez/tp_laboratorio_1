@@ -51,10 +51,6 @@ void titulo()
 {
 	printf("**********************************************************************************************************************\n----CALCULADORA----\n**********************************************************************************************************************\n");
 }
-void mostrarMenu()
-{
-	printf("\n1. Ingresar 1er (A = )\n2. Ingresar 2do operando (B = y)\n3. Calcular todas las operaciones\n4. Informar resultados\n5. Salir\n\n-Opcion: ");
-}
 
 int valorMenu(int x, int y)
 {
@@ -66,10 +62,17 @@ int valorMenu(int x, int y)
 
 int factorial(int num)
 {
-	int mult=1;
-	for(int itera=num; itera>0;itera--)
+	int fac=1;
+	if (num>0)
 	{
-		mult*=itera;
+		for(int itera=num; itera>0;itera--)
+		{
+			fac*=itera;
+		}
+	}else
+	{
+		fac=0;
 	}
-	return mult;
+
+	return fac;
 }
