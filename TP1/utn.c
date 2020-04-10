@@ -86,23 +86,23 @@ void titulo(void) //Titulo de mi programa, es solo estetica.
 
 /*-- valorMenu() --Permite ver el menu, validar que el valor esté entre 1 - 5 y retornar la opción elegida del menu,
 esta funcion lo realice para no tener tantos printf en el main.*/
-int valorMenu(int num1, int num2)
+int valorMenu(int num1, int num2, char operacion)
 {
 	int bufferMenu;
 	titulo();
-	printf("\n1. Ingresar 1er (A = %d)\n2. Ingresar 2do operando (B = %d)\n3. Calcular todas las operaciones\n4. Informar resultados\n5. Salir\n\n-Opcion: ", num1, num2);
+	printf("\n1. Ingresar 1er (A = %d)\n2. Ingresar 2do operando (B = %d)\n3. Calcular todas las operaciones (%c)\n4. Informar resultados\n5. Salir\n\n-Opcion: ", num1, num2,operacion);
 	//fflush(stdin);
 	scanf("%d",&bufferMenu);
 	while(bufferMenu<1 || bufferMenu>5)
 	{
 		system("cls");
 		titulo();
-		printf("\n1. Ingresar 1er (A = %d)\n2. Ingresar 2do operando (B = %d)\n3. Calcular todas las operaciones\n4. Informar resultados\n5. Salir\n\n-Opcion: ", num1, num2);
+		printf("\n1. Ingresar 1er (A = %d)\n2. Ingresar 2do operando (B = %d)\n3. Calcular todas las operaciones (%c)\n4. Informar resultados\n5. Salir\n\n-Opcion: ", num1, num2, operacion);
 		printf("\n\n\aERROR - Valor invalido - Reintente! \n");
 		system("PAUSE");
 		system("cls");
 		titulo();
-		printf("\n1. Ingresar 1er (A = %d)\n2. Ingresar 2do operando (B = %d)\n3. Calcular todas las operaciones\n4. Informar resultados\n5. Salir\n\n-Opcion: ", num1, num2);
+		printf("\n1. Ingresar 1er (A = %d)\n2. Ingresar 2do operando (B = %d)\n3. Calcular todas las operaciones (%c)\n4. Informar resultados\n5. Salir\n\n-Opcion: ", num1, num2, operacion);
 		fflush(stdin);
 		scanf("%d",&bufferMenu);
 	}

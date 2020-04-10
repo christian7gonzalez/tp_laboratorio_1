@@ -43,6 +43,7 @@ int main(void)
 	char subMenu;
 	int x=0;
 	int y=0;
+	char operacion = ' ';
 	int flagX= TRUE;
 	int flagY= TRUE;
 	int flagOperacion=TRUE;
@@ -56,7 +57,7 @@ int main(void)
 	do
 	{
 
-		menu= valorMenu(x, y); //Devuelve la opcion del menu y asigna a menu.
+		menu= valorMenu(x, y,operacion); //Devuelve la opcion del menu y asigna a menu.
 		switch(menu)
 		{
 			case 1:
@@ -81,7 +82,7 @@ int main(void)
 					system("PAUSE");
 					system("cls");
 					titulo();
-					printf("\n1. Ingresar 1er (A = %d)\n2. Ingresar 2do operando (B = %d)\n3. Calcular todas las operaciones\n4. Informar resultados\n5. Salir\n\n-Opcion: %d",x,y,menu);
+					printf("\n1. Ingresar 1er (A = %d)\n2. Ingresar 2do operando (B = %d)\n3. Calcular todas las operaciones (%c)\n4. Informar resultados\n5. Salir\n\n-Opcion: %d",x,y,operacion,menu);
 					printf("\n\n--Submenu--\na) Calcular la suma (A+B)\nb) Calcular la resta (A-B)\nc) Calcular la division (A/B)\nd) Calcular la multiplicacion (A*B)\ne) Calcular el factorial (A!) y (B!)\nf) Volver\n\n-Opcion: ");
 					fflush(stdin);
 					scanf("%c",&subMenu);
@@ -89,11 +90,11 @@ int main(void)
 
 				switch(subMenu)
 				{
-					case 'a': resultado = sumar(x,y); break;
-					case 'b': resultado = retar(x,y); break;
-					case 'c': errorHub = dividir(x,y,&resultado); break;
-					case 'd': resultado = multiplicar(x,y); break;
-					case 'e': respuestaFacA = factorial(x,&factorialA); respuestaFacB = factorial(y,&factorialB); break;
+					case 'a': operacion = '+'; break;
+					case 'b': operacion = '-'; break;
+					case 'c': operacion = '/'; break;
+					case 'd': operacion = '*'; break;
+					case 'e': operacion ='!'; break;
 					case 'f': break;
 				}
 				flagOperacion=FALSE;
@@ -107,17 +108,20 @@ int main(void)
 					switch(subMenu)
 					{
 					case 'a':
-						printf("\n\nEl resultado de A+B es: %f\n",resultado);
+						resultado = sumar(x,y);
+						printf("\n\nEl resultado de A+B es: %.2f\n",resultado);
 						system("PAUSE");
 						break;
 					case 'b':
-						printf("\n\nEl resultado de A-B es: %f\n",resultado);
+						resultado = retar(x,y);
+						printf("\n\nEl resultado de A-B es: %.2f\n",resultado);
 						system("PAUSE");
 						break;
 					case 'c':
+						errorHub = dividir(x,y,&resultado);
 						if(errorHub==0)
 						{
-							printf("\n\nEl resultado de A/B es: %f\n",resultado);
+							printf("\n\nEl resultado de A/B es: %.2f\n",resultado);
 							system("PAUSE");
 						}
 						else
@@ -127,10 +131,12 @@ int main(void)
 						}
 						;break;
 					case 'd':
-						printf("\n\nEl resultado de A*B es: %f\n",resultado);
+						resultado = multiplicar(x,y);
+						printf("\n\nEl resultado de A*B es: %.2f\n",resultado);
 						system("PAUSE");
 						break;
 					case 'e':
+						respuestaFacA = factorial(x,&factorialA); respuestaFacB = factorial(y,&factorialB);
 						if(respuestaFacA == 0)
 						{
 							printf("\n\nEl factorial de A = %d es: %.2f.\n",x,factorialA);
@@ -138,7 +144,7 @@ int main(void)
 						}
 						else
 						{
-							printf("\n\n\aERROR - No se puede realizar el factorial de un numero menor a 0. A es %f.\n",factorialA);
+							printf("\n\n\aERROR - No se puede realizar el factorial de un numero menor a 0. A es %.2f.\n",factorialA);
 							system("PAUSE");
 						}
 						if(respuestaFacB == 0)
@@ -148,7 +154,7 @@ int main(void)
 						}
 						else
 						{
-							printf("\aERROR - No se puede realizar el factorial de un numero menor a 1. B es %f.\n\n",factorialB);
+							printf("\aERROR - No se puede realizar el factorial de un numero menor a 1. B es %.2f.\n\n",factorialB);
 							system("PAUSE");
 						}
 						break;
