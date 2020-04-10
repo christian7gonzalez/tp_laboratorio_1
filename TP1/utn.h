@@ -20,5 +20,9 @@ int factorial(int num, double* pDireccionFactorial);
 
 void titulo();
 int valorMenu(int num1, int num2);
+void imprimirArray(int array[], int len);
+void promedioArray(int array[], int len, float* pPromedioResultado);
+void ordenarArray(int array[], int len);
+
 
 #endif /* UTN_H_ */

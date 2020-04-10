@@ -91,6 +91,7 @@ int valorMenu(int num1, int num2)
 	int bufferMenu;
 	titulo();
 	printf("\n1. Ingresar 1er (A = %d)\n2. Ingresar 2do operando (B = %d)\n3. Calcular todas las operaciones\n4. Informar resultados\n5. Salir\n\n-Opcion: ", num1, num2);
+	//fflush(stdin);
 	scanf("%d",&bufferMenu);
 	while(bufferMenu<1 || bufferMenu>5)
 	{
@@ -102,8 +103,53 @@ int valorMenu(int num1, int num2)
 		system("cls");
 		titulo();
 		printf("\n1. Ingresar 1er (A = %d)\n2. Ingresar 2do operando (B = %d)\n3. Calcular todas las operaciones\n4. Informar resultados\n5. Salir\n\n-Opcion: ", num1, num2);
+		fflush(stdin);
 		scanf("%d",&bufferMenu);
 	}
 	return bufferMenu;
 }
 
+
+void imprimirArray(int array[], int len)
+{
+	for(int i=0; i<len ;i++)
+	{
+		printf("%d",array[i]);
+	}
+}
+
+int promedioArray(int array[], int len, float* pPromedioResultado)
+{
+	int pro = 0;
+	int retorno=-1;
+	if (pPromedioResultado != NULL && len>0 && array != NULL)
+	{
+		for (int i=0; i<len;i++)
+		{
+			pro += array[i];
+		}
+		*pPromedioResultado = (float)pro/len;
+		retorno = 0;
+	}
+	return retorno;
+}
+
+void ordenarArray(int array[], int len)
+{
+	int aux;
+	do
+	{
+		for(int i=0; i<len;i++)
+		{
+			// 3 5 8 1 2  3 5 1 2 8
+			if(array[i]>array[i+1])
+			{
+				aux = array[i+1];
+				array[i+1]=array[i];
+				array[i]=aux;
+			}
+		}
+		len--;
+	}while(len>0);
+
+}

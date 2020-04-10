@@ -56,7 +56,7 @@ int main(void)
 	do
 	{
 
-		menu= valorMenu(x, y); //Devuelve la opcion del menu y asigno a menu.
+		menu= valorMenu(x, y); //Devuelve la opcion del menu y asigna a menu.
 		switch(menu)
 		{
 			case 1:
