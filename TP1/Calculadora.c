@@ -39,8 +39,8 @@ que contenga las funciones para realizar las cinco operaciones.
 int main(void)
 {
 	setbuf(stdout,NULL);
-	int menu;
-	char subMenu;
+	int menu;//4 byte
+	char subMenu; // 1 byte 'b'
 	int x=0;
 	int y=0;
 	char operacion = ' ';
@@ -56,7 +56,6 @@ int main(void)
 
 	do
 	{
-
 		menu= valorMenu(x, y,operacion); //Devuelve la opcion del menu y asigna a menu.
 		switch(menu)
 		{
@@ -108,17 +107,17 @@ int main(void)
 					switch(subMenu)
 					{
 					case 'a':
-						resultado = sumar(x,y);
+						resultado = utn_sumar(x,y);
 						printf("\n\nEl resultado de A+B es: %.2f\n",resultado);
 						system("PAUSE");
 						break;
 					case 'b':
-						resultado = retar(x,y);
+						resultado = utn_retar(x,y);
 						printf("\n\nEl resultado de A-B es: %.2f\n",resultado);
 						system("PAUSE");
 						break;
 					case 'c':
-						errorHub = dividir(x,y,&resultado);
+						errorHub = utn_dividir(x,y,&resultado);
 						if(errorHub==0)
 						{
 							printf("\n\nEl resultado de A/B es: %.2f\n",resultado);
@@ -131,12 +130,12 @@ int main(void)
 						}
 						;break;
 					case 'd':
-						resultado = multiplicar(x,y);
+						resultado = utn_multiplicar(x,y);
 						printf("\n\nEl resultado de A*B es: %.2f\n",resultado);
 						system("PAUSE");
 						break;
 					case 'e':
-						respuestaFacA = factorial(x,&factorialA); respuestaFacB = factorial(y,&factorialB);
+						respuestaFacA = utn_factorial(x,&factorialA); respuestaFacB = utn_factorial(y,&factorialB);
 						if(respuestaFacA == 0)
 						{
 							printf("\n\nEl factorial de A = %d es: %.2f.\n",x,factorialA);
