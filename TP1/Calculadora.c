@@ -75,7 +75,7 @@ int main(void)
 				printf("\n\n--Submenu--\na) Calcular la suma (A+B)\nb) Calcular la resta (A-B)\nc) Calcular la division (A/B)\nd) Calcular la multiplicacion (A*B)\ne) Calcular el factorial (A!) y (B!)\nf) Volver\n\n-Opcion: ");
 				fflush(stdin);
 				scanf("%c",&subMenu);
-				while(subMenu<'a' || subMenu>'f') //entra cuando el valor del submenu no esta entre a y e
+				while(subMenu<'a' || subMenu>'f')
 				{
 					printf("\n\n\aERROR - Valor invalido - Reintente! \n");
 					system("PAUSE");

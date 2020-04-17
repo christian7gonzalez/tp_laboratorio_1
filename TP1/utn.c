@@ -6,18 +6,37 @@
  *
  *      Mis funciones definidas codeadas
  */
+/**\\EJEMPLO DE COMENTARIO
+ * \brief  	Que hace
+ *\param	que parametros son
+ *\param	que parametros son
+ *\return 0 si OK o -1 para indicar un error
+ *
+ */
+
 #include<stdio.h>
 #include<stdlib.h>
 
-/*
- * */
+/**
+ * \brief Imprime un titulo para mi proyecto
+ *\param
+ *\param
+ *\return 0 si OK o -1 para indicar un error
+ *
+ */
 void titulo(void)
 {
 	printf("**********************************************************************************************************************\n----CALCULADORA----\n**********************************************************************************************************************\n");
 }
 
-/*-- valorMenu() --Permite ver el menu, validar que el valor esté entre 1 - 5 y retornar la opción elegida del menu,
-esta funcion lo realice para no tener tantos printf en el main.*/
+/**
+ * \brief Imprime el menu, el titulo con printf y llamando a la funcion titilo
+ *\param num1 toma el valor de x en main, remplaza la mascara en el printf
+ *\param num2 toma el valor de y en main, remplaza la mascara en el printf
+ *\param operacion que operacion debe realizar, remplaza la mascara en el printf
+ *\return bufferMenu del 1 al 5 ok.
+ *
+ */
 int valorMenu(int num1, int num2, char operacion)
 {
 	int bufferMenu;
@@ -40,11 +59,13 @@ int valorMenu(int num1, int num2, char operacion)
 	return bufferMenu;
 }
 
-
-
-/*La funcion sumar pide 2 argumentos, realiza la suma y la guarda en una variable local
- sum, y retorna el valor de la operacion.
- * */
+/**
+ * \brief Realiza una suma de 2 numeros
+ *\param num1 toma valores enteros int
+ *\param num2 toma valores enteros int
+ *\return sum se devuelve el valor de la suma(int).
+ *
+ */
 int utn_sumar(int num1, int num2)
 {
 	int sum;
@@ -55,10 +76,13 @@ int utn_sumar(int num1, int num2)
 	}
 	return sum;
 }
-
-/*La funcion restar pide 2 argumentos, realiza la resta y la guarda en una variable local
- resta, y retorna el valor de la operacion.
-*/
+/**
+ * \brief Realiza la resta de 2 numeros, guarda en variable local resta
+ *\param num1 toma valores enteros int
+ *\param num2 toma valores enteros int
+ *\return resta se devuelve el valor de la resta(int).
+ *
+ */
 int utn_retar(int num1,int num2)
 {
 	int resta;
@@ -66,18 +90,27 @@ int utn_retar(int num1,int num2)
 	return resta;
 }
 
-/*La funcion multiplicar pide 2 argumentos, realiza la multiplizacion y la guarda en una variable local
- *multiplicacion, y retorna el valor de la operacion.*/
+/**
+ * \brief Realiza la multiplicacion de 2 numeros, guarda en variable local multiplicacion
+ *\param num1 toma valores enteros int
+ *\param num2 toma valores enteros int
+ *\return multiplicacion devuelve el valor de la multiplicacion(int).
+ *
+ */
 int utn_multiplicar (int num1, int num2)
 {
 	int multiplicacion;
 	multiplicacion = num1 * num2;
 	return multiplicacion;
 }
-
-/*La funcion dividir pide 3 parametros, una es la direccion de memoria
- *se verifica que sea una direccion de memoria y que el 2 argumento sea distinto de 0
- *si cumple guarda el resultado en el puntero retorna 0, sino retorna errorHub -1. */
+/**
+ * \brief Realiza la division de 2 numeros, guarda valor por referencia
+ *\param num1 toma valores enteros int, es dividendo
+ *\param num2 toma valores enteros int, es divisor
+ *\param pDireccionDeVariable es un puntero del tipo double donde se guarda el varlor de la division
+ *\return errorHub 0 si es ok y -1 si hay algun error.
+ *
+ */
 int utn_dividir (int num1, int num2, float* pDireccionDeVariable)
 {
 	int errorHub= -1;
@@ -88,10 +121,13 @@ int utn_dividir (int num1, int num2, float* pDireccionDeVariable)
 	}
 	return errorHub;
 }
-
-/*La funcion factorial pide 2 argumentos numero y direccion de memoria, valida que sea una direccion de memoria y
- * que el numero sea mayor igual a 0, en caso que el numero sea 0 el resultado es 1, si es mayor realiza el fatorial,
- * en caso que el numero sea menos a 0 retorna -1 error.*/
+/**
+ * \brief Realiza el factorial de un numero, guarda valor por referencia
+ *\param num toma valores enteros int
+ *\param pDireccionFactorial es un puntero a la direccion de memoria donde se guarda el varlor del factorial
+ *\return errorHub 0 si es ok y -1 si hay algun error.
+ *
+ */
 int utn_factorial(int num, double* pDireccionFactorial)
 {
 	double fac=1;
