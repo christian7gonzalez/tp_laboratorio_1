@@ -9,8 +9,6 @@
 
 #define LEN_GENERICO 20
 
-//static int controller_archivo(char* path, char* modo, int (*pfuncion)(FILE* pFile,LinkedList* lista),LinkedList* lista);
-
 
 /** \brief Carga los datos de los empleados desde el archivo data.csv (modo texto).
  *
@@ -30,13 +28,14 @@ int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
 		{
 			for(int i=0;i<ll_len(pArrayListEmployee);i++)
 			{
+				//printf("\n\nEntra");
 				auxEmployee = (Employee*)ll_get(pArrayListEmployee,i);
 				employee_delete(auxEmployee);
 			}
 			ll_clear(pArrayListEmployee);
 		}
 
-		controller_archivo(path,"r",parser_EmployeeFromText,pArrayListEmployee);
+		controller_archivo(path,"r",parser_EmployeeFromText,pArrayListEmployee);//Leo texto
 		retorno = 1;
 		printf("\n\nLectura completada!\n\n");
 	}
@@ -54,35 +53,22 @@ int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
 int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
 {
 	int retorno = -1;
-	char path2[PATH_LEN];
 	Employee* auxEmployee;
-	FILE* fp;
+	//FILE* fp;
 	if(path != NULL && pArrayListEmployee!=NULL)
 	{
 		retorno = 0;
-		parse_PathBin(path,path2);
-		fp = fopen(path2,"rb");
-		if(fp!=NULL)
+		if(ll_len(pArrayListEmployee)>0)
 		{
-			parser_EmployeeFromBinary(fp,pArrayListEmployee);
-			fclose(fp);
-		}
-		else
-		{
-			controller_archivo(path,"rb",parser_EmployeeFromText,pArrayListEmployee);
-			parse_PathBin(path,path2);//cambia la extension
-			controller_archivo(path2,"wb",parse_saveBinary,pArrayListEmployee);
-			if(ll_len(pArrayListEmployee)>0)
+			for(int i=0;i<ll_len(pArrayListEmployee);i++)
 			{
-				for(int i=0;i<ll_len(pArrayListEmployee);i++)
-				{
-					auxEmployee = (Employee*)ll_get(pArrayListEmployee,i);
-					employee_delete(auxEmployee);
-				}
-				ll_clear(pArrayListEmployee);
+				//printf("\n\nEntra");
+				auxEmployee = (Employee*)ll_get(pArrayListEmployee,i);
+				employee_delete(auxEmployee);
 			}
-			controller_archivo(path2,"rb",parser_EmployeeFromBinary,pArrayListEmployee);
+			ll_clear(pArrayListEmployee);
 		}
+		controller_archivo(path,"rb",parser_EmployeeFromBinary,pArrayListEmployee);
 		printf("\n\nLectura completada!\n\n");
 	}
 	return retorno;
@@ -260,16 +246,15 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
 	FILE* fp;
 	if(path!=NULL && pArrayListEmployee!=NULL)
 	{
-
-			fp= fopen(path,"w");
-			if(fp!=NULL)
-			{
-				fprintf(fp,"id,nombre,horasTrabajadas,sueldo\n");
-				parse_saveText(fp,pArrayListEmployee);
-				fclose(fp);
-				retorno = 1;
-			}
-			printf("\nEXITO - Datos guardados\n\n");
+		controller_archivo(path,"w",parse_saveText,pArrayListEmployee);
+		fp= fopen(path,"w");
+		if(fp!=NULL)
+		{
+			parse_saveText(fp,pArrayListEmployee);
+			fclose(fp);
+			retorno = 1;
+		}
+		printf("\nEXITO - Datos guardados\n\n");
 	}
     return retorno;
 }
@@ -284,16 +269,11 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
 int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee)
 {
 	int retorno =-1;
-	FILE* fp;
+	//FILE* fp;
 	if(path!=NULL && pArrayListEmployee!=NULL)
 	{
-			fp= fopen(path,"wb");
-			if(fp!=NULL)
-			{
-				parse_saveBinary(fp,pArrayListEmployee);
-				fclose(fp);
-			}
-			printf("\n\nEXITO - Datos guardados\n\n");
+		controller_archivo(path,"wb",parse_saveBinary,pArrayListEmployee);
+		printf("\n\nEXITO - Datos guardados\n\n");
 		retorno = 0;
 	}
     return retorno;
@@ -357,4 +337,5 @@ int controller_archivo(char* path, char* modo, int (*pfuncion)(FILE* pFile,Linke
 	}
 	return retorno;
 }
+
 

@@ -66,7 +66,7 @@ int main()
             	controller_saveAsText("data.csv",listaEmpleados);
             	break;
             case 9:
-            	controller_saveAsBinary("data.bin",listaEmpleados);
+            	controller_saveAsBinary("data.csv",listaEmpleados);
             	break;
 
         }

@@ -58,7 +58,7 @@ int parser_EmployeeFromBinary(FILE* pFile , LinkedList* pArrayListEmployee)
 	if(pFile!=NULL)
 	{
 		//fwrite("\n\nID - Nombre - Horas Trabajadas - Sueldo \n",sizeof(char),1,pFile);
-		do//for(i=0;i<ll_len(pArrayListEmployee);i++)
+		do
 		{
 			auxEmployee = employee_new();
 			fin = fread(auxEmployee,sizeof(Employee),1,pFile);
@@ -75,30 +75,6 @@ int parser_EmployeeFromBinary(FILE* pFile , LinkedList* pArrayListEmployee)
     return retorno;
 }
 
-
-int parse_PathBin(char* path,char* path2)
-{
-	int retorno=-1;
-	int i;
-	if(path2!=NULL && path!=NULL)
-	{
-		strncpy(path2,path,PATH_LEN);
-		for(i=0;i<strnlen(path,sizeof(path2));i++)
-		{
-			if(path2[i-1] == '.')
-			{
-				path2[i]='b';
-				path2[i+1]='i';
-				path2[i+2]='n';
-				path2[i+3]='\0';
-				retorno = 0;
-				break;
-			}
-		}
-	}
-	return retorno;
-}
-
 int parse_saveText(FILE* pFile , LinkedList* pArrayListEmployee)
 {
 	int retorno =-1;
@@ -106,6 +82,7 @@ int parse_saveText(FILE* pFile , LinkedList* pArrayListEmployee)
 	int i;
 	if(pFile!=NULL && pArrayListEmployee!=NULL)
 	{
+		fprintf(pFile,"id,nombre,horasTrabajadas,sueldo\n");
 		for(i=0;i<ll_len(pArrayListEmployee);i++)
 		{
 			auxEmployee = (Employee*)ll_get(pArrayListEmployee,i);
@@ -121,15 +98,14 @@ int parse_saveBinary(FILE* pFile , LinkedList* pArrayListEmployee)
 	int retorno =-1;
 	Employee* auxEmployee;
 	int i;
-	//char titulo[]="id,nombre,horasTrabajadas,sueldo";
 	if(pFile!=NULL && pArrayListEmployee!=NULL)
 	{
-		//fprintf(pFile,"%s\n",titulo);
 		for(i=0;i<ll_len(pArrayListEmployee);i++)
 		{
 			auxEmployee = (Employee*)ll_get(pArrayListEmployee,i);
 			fwrite(auxEmployee,sizeof(Employee),1,pFile);
 		}
+		fclose(pFile);
 		retorno = 0;
 	}
 	return retorno;
